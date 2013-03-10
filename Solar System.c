@@ -4,13 +4,51 @@ Oðuzhan TÜRK
 040080232
 *****************/
 
-#include <GL/glut.h>
+/*#pragma comment(lib, "opengl32.lib")
+#pragma comment(lib, "glut32.lib")
+#pragma comment(lib, "glu32.lib")
+#pragma comment(lib, "SOIL.lib")*/
 
+#include<Windows.h>
+#include<stdio.h>
+
+#include<GL/glut.h>
+#include<GL/GL.h>
+#include<GL/GLU.h>
+//#include "SOIL.h"
+
+/*GLint LoadGLTexture(const char *filename, int width, int height){
+    GLuint _texture;
+    
+    _texture = SOIL_load_OGL_texture // load an image file directly as a new OpenGL texture 
+	(
+     filename,
+     SOIL_LOAD_AUTO,
+     SOIL_CREATE_NEW_ID,
+     SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT 
+     );
+    
+    // check for an error during the load process 
+    if(!_texture){
+	    printf("SOIL loading error: '%s'\n", SOIL_last_result());
+    }
+	
+    
+    glBindTexture(GL_TEXTURE_2D, _texture); // select our current texture
+    //glGenerateMipmap(GL_TEXTURE_2D);
+    glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);  
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);  // texture should tile
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+    return _texture;
+}*/
 
 GLfloat	lPos[]={0, 0, 0, 1};
 GLfloat sLight[]={0.95, 0.95, 0.95, 1};
 GLfloat wLight[]={0.25, 0.25, 0.25, 1};
-
 
 void Render(){
 	static GLfloat rSun=0;
@@ -77,6 +115,7 @@ void Render(){
 	glColor3ub(0, 0, 255);
 	glTranslatef(95, 0, 0);
 	glRotatef(rEarth, 0, 1, 0);
+	//LoadGLTexture("earth.jpg", 10, 10);
 	glutSolidSphere(1.8*unitRadius, shapeQuality, shapeQuality);
 	rEarth+=3;
 	if(rEarth>360)
